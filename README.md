@@ -11,7 +11,7 @@ The `lvmcorr` R package we provide contains code associated with the article
 It contains tailored estimation code for the proposed joint latent variable framework using full Bayesian methods. R and C++ compiled code (Rcpp, RcppArmadillo) is used with OpenMP API for parallel computing to boost the estimation. Direct sampling (when applicable by using proper conjugate prior) and adaptive rejection Metropolis sampling are both employed in the program. See Appendix D and E in the manuscript for more details. Furthermore, practical features for MCMC sampling program such as time consumption estimation with progress bar and support for interruptions of estimation (intermediate result will be saved, even for multi-thread function) are also enabled.
 
 ### An example
-[Fitting-synthetic-data](https://github.com/slzhang-fd/jsem-ukhls/wiki/Fitting-synthetic-data)
+[Fitting-synthetic-data](https://github.com/slzhang-fd/lvmcorr/wiki/Fit-synthetic-data)
 
 ### Supporting software requirements
 R, gcc with OpenMP enabled
@@ -44,7 +44,7 @@ GPL v3.0
 ### Additional information
 
 #### Configuration of the C++ Toolchain 
-This step is optional, but it can result in compiled jsem programs that execute much faster than they otherwise would. Simply paste the following into R before installation
+This step is optional, but it can result in compiled lvmcorr programs that execute much faster than they otherwise would. Simply paste the following into R before installation
 ```{r, eval=F}
 dotR <- file.path(Sys.getenv("HOME"), ".R")
 if (!file.exists(dotR)) dir.create(dotR)
@@ -64,7 +64,7 @@ file.edit(M)
 ```
 
 #### For Windows users
-Please make sure [Rtools](https://cran.r-project.org/bin/windows/Rtools/) software is installed before installing the `jsem` package.
+Please make sure [Rtools](https://cran.r-project.org/bin/windows/Rtools/) software is installed before installing the `lvmcorr` package.
 
 #### For MacOS users
 If there is the "math.h not found" error during installation, please install the xcode command line tool first (run the following in the terminal)
