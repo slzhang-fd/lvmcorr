@@ -1,0 +1,29 @@
+Package: lvmcorr
+Type: Package
+Title: Modelling Correlation Matrices in Multivariate Data
+Version: 0.1.1
+Date: 2023-1-16
+Authors@R: c(
+    person("Siliang", "Zhang", email = "zhangsiliang123@gmail.com", role = c("aut", "cre")),
+    person("Jouni", "Kuha", role = "aut"),
+    person("Fiona", "Steele", role = "aut")
+    )
+Author: Siliang Zhang [aut, cre],
+    Jouni Kuha [aut],
+    Fiona Steele [aut]
+Maintainer: Siliang Zhang <zhangsiliang123@gmail.com>
+Description: Efficient MCMC sampling procedure for modelling correlation matrices 
+    in a joint multivariate latent variable model framework.
+License: GPL-3
+URL: https://github.com/slzhang-fd/lvmcorr
+BugReports: https://github.com/slzhang-fd/lvmcorr/issues
+Depends: R (>= 3.5.0), coda, RcppTN
+Imports: Rcpp (>= 0.12.17), RcppProgress (>= 0.1)
+LinkingTo: Rcpp, RcppArmadillo, RcppProgress, RcppDist, RcppTN
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
+Encoding: UTF-8
+LazyData: yes
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
+RoxygenNote: 7.1.2

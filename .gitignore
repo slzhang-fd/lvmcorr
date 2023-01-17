@@ -1,0 +1,14 @@
+
+.Rhistory
+.Rproj.user
+.RData
+
+*.o
+*.so
+*.dll
+
+
+.DS_Store
+doc
+Meta
+inst/doc
