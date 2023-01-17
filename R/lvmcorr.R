@@ -223,18 +223,20 @@ dylanie_model_mchains <- function(formula, data, mcmc_len, chains=1,verbose=F){
 #' @param verbose boolen variable, whether enable verbose mode.
 #' @return The function returns a list with the following components:
 #' \describe{
-#'   \item{g_draws}{A matrix containing MCMC draws for coefficient parameters $\phi_\xi$.}
-#'   \item{b_tp_draws}{A matrix containing MCMC draws for coefficient parameters $\beta_{GP}$.}
-#'   \item{b_fp_draws}{A matrix containing MCMC draws for coefficient parameters $\beta_{RP}$.}
-#'   \item{u_tp_draws}{A matrix containing MCMC draws for coefficient parameters $\beta_{GF}$.}
-#'   \item{u_fp_draws}{A matrix containing MCMC draws for coefficient parameters $\beta_{RF}$.}
-#'   \item{sig_draws}{A matrix containing MCMC draws for variances of $\eta_1$ and $\eta_2$.}
+#'   \item{g_draws}{A matrix containing MCMC draws for coefficient parameters \eqn{\phi_\xi}.}
+#'   \item{b_tp_draws}{A matrix containing MCMC draws for coefficient parameters \eqn{\beta_{GP}}.}
+#'   \item{b_fp_draws}{A matrix containing MCMC draws for coefficient parameters \eqn{\beta_{RP}}.}
+#'   \item{u_tp_draws}{A matrix containing MCMC draws for coefficient parameters \eqn{\beta_{GF}}.}
+#'   \item{u_fp_draws}{A matrix containing MCMC draws for coefficient parameters \eqn{\beta_{RF}}.}
+#'   \item{sig_draws}{A matrix containing MCMC draws for variances of \eqn{\eta_1} and \eqn{\eta_2}.}
 #'   \item{beta_rho_draws}{A matrix containing MCMC draws for coefficients of correlations.}
-#'   \item{e1234_last}{A matrix containing MCMC draws for continuous random variables $\eta_1$-$\eta_4$.}
-#'   \item{xi_last}{A matrix containing MCMC draws for discrete random variables $\xi$.}
+#'   \item{e1234_last}{A matrix containing MCMC draws for continuous random variables \eqn{\eta_1}-\eqn{\eta_4}.}
+#'   \item{xi_last}{A matrix containing MCMC draws for discrete random variables \eqn{\xi}.}
 #' }
 #' @references 
-#' Zhang, S., Kuha, J., & Steele, F. (2021). manuscript.
+#'  Zhang, S., Kuha, J., & Steele, F. (2023). Modelling correlation matrices in multivariate data,
+#'  with application to reciprocity and complementarity of child-parent exchanges of support.
+#'  (https://arxiv.org/abs/2210.14751)
 #' @export jcorr_model_simple
 jcorr_model_simple <- function(formula_mean, formula_corr, data, mcmc_len, verbose = F){
   N <- nrow(data$ytp)

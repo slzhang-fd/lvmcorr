@@ -72,4 +72,3 @@ res_summary_general <- function(lvmcorr_res, var_names, burn_len=0){
   return(res)
 }
 
-?do.call
