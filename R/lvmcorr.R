@@ -1,10 +1,7 @@
-#' An R package for joint structural equation modeling
-#' 
 #' @useDynLib lvmcorr
 #' @importFrom Rcpp evalCpp
 #' @importFrom stats rbinom
 #' 
-#' @export lvmcorr
 lvmcorr <- function(ytp, yfp, x_covariates, b_tp_init, b_fp_init, g_init, g_free_ind, sig2_tp_init, sig2_fp_init,
                  rho_init, e_tp, e_fp, e12, xi, beta_tp, alpha_tp, beta_fp, alpha_fp, mcmc_len){
   N <- nrow(ytp)
@@ -208,6 +205,36 @@ dylanie_model_mchains <- function(formula, data, mcmc_len, chains=1,verbose=F){
                                data$beta_tp, data$alpha_tp, data$beta_fp, data$alpha_fp, mcmc_len, chains)
   return(res_cpp)
 }
+#' Paralleled full Bayesian estimation for multivariate dyads data analysis using a
+#' joint latent variable framework with linear correlation model.
+#' 
+#' The program perform estimation for a general latent variable modelling framework.
+#' This framework is intended for for the analysis of 
+#' multivariate binary data on dyads, which can also handle zero inflation and 
+#' non-equivalence of measurement.
+#'
+#' @param formula_mean an object of class "formula" similar to linear regression. 
+#' It is a symbolic description of the covariates set used in the mean model.
+#' @param formula_corr an object of class "formula" similar to linear regression. 
+#' It is a symbolic description of the covariates set used in the correlation model.
+#' @param data a list for data input. It contains binary response matrices, 
+#' covariate variables (See data_dictionary.txt for more details).
+#' @param mcmc_len an integer specifies the length of MCMC draws.
+#' @param verbose boolen variable, whether enable verbose mode.
+#' @return The function returns a list with the following components:
+#' \describe{
+#'   \item{g_draws}{A matrix containing MCMC draws for coefficient parameters $\phi_\xi$.}
+#'   \item{b_tp_draws}{A matrix containing MCMC draws for coefficient parameters $\beta_{GP}$.}
+#'   \item{b_fp_draws}{A matrix containing MCMC draws for coefficient parameters $\beta_{RP}$.}
+#'   \item{u_tp_draws}{A matrix containing MCMC draws for coefficient parameters $\beta_{GF}$.}
+#'   \item{u_fp_draws}{A matrix containing MCMC draws for coefficient parameters $\beta_{RF}$.}
+#'   \item{sig_draws}{A matrix containing MCMC draws for variances of $\eta_1$ and $\eta_2$.}
+#'   \item{beta_rho_draws}{A matrix containing MCMC draws for coefficients of correlations.}
+#'   \item{e1234_last}{A matrix containing MCMC draws for continuous random variables $\eta_1$-$\eta_4$.}
+#'   \item{xi_last}{A matrix containing MCMC draws for discrete random variables $\xi$.}
+#' }
+#' @references 
+#' Zhang, S., Kuha, J., & Steele, F. (2021). manuscript.
 #' @export jcorr_model_simple
 jcorr_model_simple <- function(formula_mean, formula_corr, data, mcmc_len, verbose = F){
   N <- nrow(data$ytp)
